@@ -28,6 +28,17 @@ class QuestionPage extends StatefulWidget {
 }
 
 class _QuestionPageState extends State<QuestionPage> {
+  List<Widget> runningScore = [
+    Icon(
+      Icons.check,
+      color: Colors.green,
+    ),
+    Icon(
+      Icons.close,
+      color: Colors.red,
+    )
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -52,10 +63,10 @@ class _QuestionPageState extends State<QuestionPage> {
         ),
         Expanded(
           child: Padding(
-            padding: EdgeInsets.all(15.0),
+            padding: EdgeInsets.all(10.0),
             child: FlatButton(
               textColor: Colors.white,
-              color: Colors.teal,
+              color: Colors.green,
               child: Text(
                 'True',
                 style: TextStyle(
@@ -63,7 +74,18 @@ class _QuestionPageState extends State<QuestionPage> {
                   fontSize: 20.0,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                setState(
+                  () {
+                    runningScore.add(
+                      Icon(
+                        Icons.check,
+                        color: Colors.green,
+                      ),
+                    );
+                  },
+                );
+              },
             ),
           ),
         ),
@@ -71,7 +93,8 @@ class _QuestionPageState extends State<QuestionPage> {
           child: Padding(
             padding: EdgeInsets.all(15.0),
             child: FlatButton(
-              color: Colors.teal,
+              textColor: Colors.white,
+              color: Colors.red,
               child: Text(
                 'False',
                 style: TextStyle(
@@ -79,20 +102,24 @@ class _QuestionPageState extends State<QuestionPage> {
                   color: Colors.white,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                setState(
+                  () {
+                    runningScore.add(
+                      Icon(
+                        Icons.close,
+                        color: Colors.red,
+                      ),
+                    );
+                  },
+                );
+              },
             ),
           ),
         ),
-        Row(children: <Widget>[
-          Icon(
-            Icons.check,
-            color: Colors.green,
-          ),
-          Icon(
-            Icons.close,
-            color: Colors.red,
-          )
-        ])
+        Row(
+          children: runningScore,
+        ),
       ],
     );
   }
