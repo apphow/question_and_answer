@@ -39,6 +39,14 @@ class _QuestionPageState extends State<QuestionPage> {
     )
   ];
 
+  List<String> questions = [
+    'Can a cow go up and down stairs?',
+    'Approximately one quarter of human bones are in the feet.',
+    'A slug\'s blood is green.'
+  ];
+
+  int questionNumber = 0;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -51,7 +59,7 @@ class _QuestionPageState extends State<QuestionPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'Ask your question here.',
+                questions[questionNumber],
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -77,12 +85,7 @@ class _QuestionPageState extends State<QuestionPage> {
               onPressed: () {
                 setState(
                   () {
-                    runningScore.add(
-                      Icon(
-                        Icons.check,
-                        color: Colors.green,
-                      ),
-                    );
+                    questionNumber++;
                   },
                 );
               },
@@ -105,12 +108,7 @@ class _QuestionPageState extends State<QuestionPage> {
               onPressed: () {
                 setState(
                   () {
-                    runningScore.add(
-                      Icon(
-                        Icons.close,
-                        color: Colors.red,
-                      ),
-                    );
+                    questionNumber++;
                   },
                 );
               },
