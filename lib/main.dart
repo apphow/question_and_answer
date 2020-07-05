@@ -30,6 +30,22 @@ class QuestionPage extends StatefulWidget {
 class _QuestionPageState extends State<QuestionPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        Expanded(
+            flex: 5,
+            child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Center(
+                    child: Text('Ask your question here.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 25.0,
+                          color: Colors.white,
+                        )))))
+      ],
+    );
   }
 }
