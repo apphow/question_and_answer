@@ -35,16 +35,51 @@ class _QuestionPageState extends State<QuestionPage> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Expanded(
-            flex: 5,
+          flex: 5,
+          child: Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Center(
+              child: Text(
+                'Ask your question here.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 25.0,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.all(15.0),
+            child: FlatButton(
+              textColor: Colors.white,
+              color: Colors.teal,
+              child: Text(
+                'True',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                ),
+              ),
+              onPressed: () {},
+            ),
+          ),
+        ),
+        Expanded(
             child: Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Center(
-                    child: Text('Ask your question here.',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 25.0,
-                          color: Colors.white,
-                        )))))
+                padding: EdgeInsets.all(15.0),
+                child: FlatButton(
+                    color: Colors.teal,
+                    child: Text(
+                      'False',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                    onPressed: () {})))
       ],
     );
   }
