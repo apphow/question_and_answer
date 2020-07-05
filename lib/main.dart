@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+// import question.dart file here
+import 'question.dart';
 
 void main() {
   runApp(Questions());
@@ -28,23 +30,23 @@ class QuestionPage extends StatefulWidget {
 }
 
 class _QuestionPageState extends State<QuestionPage> {
-  List<Widget> runningScore = [
-    Icon(
-      Icons.check,
-      color: Colors.green,
-    ),
-    Icon(
-      Icons.close,
-      color: Colors.red,
-    )
+  List<Widget> runningScore = [];
+
+  // answer index will correspond with the question index
+
+  // Create the new question object from question.dart constructor
+
+  List<Question> questionList = [
+    Question(q: 'A cow can be lead down stairs but not up stairs?', a: false),
+    Question(
+        q: 'Approximately one quarter of human bones are in the feet.',
+        a: true),
+    Question(q: 'A slug\'s blood is green.', a: true),
   ];
 
-  List<String> questions = [
-    'Can a cow go up and down stairs?',
-    'Approximately one quarter of human bones are in the feet.',
-    'A slug\'s blood is green.'
-  ];
-
+  // this variable will track where we are in the question list, starting
+  // from 0, and our Text widgets below will call the question,
+  // and advance to the next question
   int questionNumber = 0;
 
   @override
@@ -59,7 +61,9 @@ class _QuestionPageState extends State<QuestionPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questions[questionNumber],
+                //the text displayed comes from the list of questions
+                // at this index [questionNumber]
+                questionList[questionNumber].questionText,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -83,6 +87,15 @@ class _QuestionPageState extends State<QuestionPage> {
                 ),
               ),
               onPressed: () {
+                // use setState to update question number and to update
+                // the screen when the user presses true of false button
+                bool correctAnswer =
+                    questionList[questionNumber].questionAnswer;
+                if (correctAnswer == true) {
+                  print("Yep, that's right!");
+                } else {
+                  print("Oops, wrong answer!");
+                }
                 setState(
                   () {
                     questionNumber++;
@@ -106,6 +119,13 @@ class _QuestionPageState extends State<QuestionPage> {
                 ),
               ),
               onPressed: () {
+                bool correctAnswer =
+                    questionList[questionNumber].questionAnswer;
+                if (correctAnswer == false) {
+                  print("That's correct! You're smart!");
+                } else {
+                  print("I'm sorry, that's not the right answer!");
+                }
                 setState(
                   () {
                     questionNumber++;
