@@ -68,18 +68,31 @@ class _QuestionPageState extends State<QuestionPage> {
           ),
         ),
         Expanded(
-            child: Padding(
-                padding: EdgeInsets.all(15.0),
-                child: FlatButton(
-                    color: Colors.teal,
-                    child: Text(
-                      'False',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                      ),
-                    ),
-                    onPressed: () {})))
+          child: Padding(
+            padding: EdgeInsets.all(15.0),
+            child: FlatButton(
+              color: Colors.teal,
+              child: Text(
+                'False',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () {},
+            ),
+          ),
+        ),
+        Row(children: <Widget>[
+          Icon(
+            Icons.check,
+            color: Colors.green,
+          ),
+          Icon(
+            Icons.close,
+            color: Colors.red,
+          )
+        ])
       ],
     );
   }
